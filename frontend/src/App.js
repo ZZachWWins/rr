@@ -12,7 +12,7 @@ import UserAgreement from "./components/UserAgreement";
 import Testimonials from "./components/Testimonials";
 import Contact from "./components/Contact";
 import TopBanner from "./components/TopBanner";
-import Footer from "./components/Footer"; // Ensure this is used
+import Footer from "./components/Footer";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -56,7 +56,7 @@ function App() {
                   `text-white hover:text-teal-300 ${isActive ? "text-teal-300 font-bold" : ""}`
                 }
               >
-                Upload
+                Upload Docs
               </NavLink>
             </li>
             <li>
@@ -105,12 +105,21 @@ function App() {
           <Route
             path="/"
             element={
-              <>
+              <div>
                 <Hero />
                 <section className="section glass-container">
                   <RefundTracker />
                 </section>
-              </>
+                <section className="section glass-container">
+                  <DocumentUpload />
+                </section>
+                <section className="section glass-container">
+                  <RefundCalculator />
+                </section>
+                <section className="section glass-container">
+                  <Testimonials />
+                </section>
+              </div>
             }
           />
           <Route
@@ -150,7 +159,7 @@ function App() {
             element={<UserAgreement />}
           />
         </Routes>
-        <Footer /> {/* Ensure Footer is rendered */}
+        <Footer />
       </div>
     </Router>
   );
