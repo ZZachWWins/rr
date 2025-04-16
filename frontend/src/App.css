@@ -118,7 +118,6 @@ body {
   padding: 40px 20px;
   background-size: cover;
   background-position: center;
-  color: ##2e7d32;
   position: relative;
   overflow: hidden;
   min-height: 400px;
@@ -133,7 +132,7 @@ body {
   background-clip: text;
   color: transparent;
   line-height: 1.2;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), -2px -2px 4px rgba(0, 0, 0, 0.3), 2px -2px 4px rgba(0, 0, 0, 0.3), -2px 2px 4px rgba(0, 0, 0, 0.3); /* Slightly lighter outline for readability */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), -2px -2px 4px rgba(0, 0, 0, 0.3), 2px -2px 4px rgba(0, 0, 0, 0.3), -2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .hero p {
