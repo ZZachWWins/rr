@@ -15,11 +15,11 @@
 }
 
 body {
-  background: linear-gradient(135deg, #f5f7fa, #e0e7f0); /* TurboTax light gradient */
+  background: linear-gradient(135deg, var(--primary-blue), var(--dark-bg)); /* Back to blue gradient */
   margin: 0;
   font-family: var(--font-body);
-  color: #333;
-  line-height: 1.7; /* Improved readability */
+  color: var(--light-text); /* High contrast text */
+  line-height: 1.8; /* Improved readability */
   overflow-x: hidden;
   min-height: 100vh; /* Ensure full height */
 }
@@ -74,6 +74,7 @@ body {
   color: var(--light-text);
   text-decoration: none;
   font-weight: 600;
+  font-size: 1.1rem; /* Larger text for readability */
   transition: var(--transition);
 }
 
@@ -87,7 +88,7 @@ body {
   padding: 100px 32px;
   background-size: cover;
   background-position: center;
-  color: #fff;
+  color: var(--light-text); /* High contrast text */
   position: relative;
   overflow: hidden;
   min-height: 400px; /* Ensure visibility */
@@ -96,26 +97,31 @@ body {
 .hero h1 {
   font-family: var(--font-heading);
   font-size: 3.5rem;
-  margin-bottom: 20px;
+  margin-bottom: 24px; /* More spacing */
   background: linear-gradient(45deg, var(--accent-teal), var(--accent-gold));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  line-height: 1.2; /* Tighter line height for headings */
 }
 
 .hero p {
   font-size: 1.3rem;
-  opacity: 0.85;
+  opacity: 1; /* Full opacity for readability */
   margin-bottom: 40px;
+  max-width: 600px; /* Limit width for better reading */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .expert-bubble {
   background: rgba(255, 255, 255, 0.9);
-  padding: 10px;
+  padding: 12px; /* More padding */
   border-radius: 5px;
   display: inline-block;
   margin-top: 20px;
   color: #333;
+  font-size: 1rem; /* Readable size */
 }
 
 .cta-btn {
@@ -131,6 +137,7 @@ body {
   box-shadow: var(--shadow);
   position: relative;
   overflow: hidden;
+  margin: 0 10px; /* Space between buttons */
 }
 
 .cta-btn::before {
@@ -226,7 +233,7 @@ body {
 footer {
   text-align: center;
   padding: 40px 32px;
-  background: linear-gradient(180deg, transparent, rgba(0, 95, 153, 0.25));
+  background: linear-gradient(180deg, transparent, rgba(var(--primary-blue), 0.25));
   margin-top: auto; /* Push to bottom */
 }
 
@@ -234,6 +241,7 @@ footer a {
   color: var(--accent-gold);
   text-decoration: none;
   font-weight: 500;
+  font-size: 1rem; /* Readable size */
   transition: var(--transition);
 }
 
@@ -247,14 +255,15 @@ footer a:hover {
   top: 0;
   left: 0;
   width: 100%;
-  background: rgba(26, 37, 51, 0.9); /* Matches dark-bg with opacity */
+  background: rgba(var(--dark-bg), 0.9); /* Matches dark-bg with opacity */
   backdrop-filter: blur(10px);
   color: var(--light-text);
-  padding: 10px;
+  padding: 12px; /* More padding */
   z-index: 50;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 1rem; /* Readable size */
 }
 
 /* Contact Page Styles */
@@ -283,8 +292,8 @@ footer a:hover {
 }
 
 .contact-header h1 {
-  font-size: 2em;
-  margin-bottom: 10px;
+  font-size: 2.2em; /* Larger for readability */
+  margin-bottom: 15px;
 }
 
 .progress-nav ul {
@@ -298,6 +307,7 @@ footer a:hover {
 .progress-nav li {
   color: #ccc;
   font-weight: bold;
+  font-size: 1.1rem; /* Readable size */
 }
 
 .progress-nav li.active {
@@ -305,24 +315,25 @@ footer a:hover {
 }
 
 .step h2 {
-  font-size: 1.5em;
-  margin-bottom: 10px;
+  font-size: 1.7em; /* Larger for readability */
+  margin-bottom: 15px;
 }
 
 .step p {
   color: #ddd;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  font-size: 1.1rem; /* Readable size */
 }
 
 .input-field {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
+  padding: 12px; /* More padding */
+  margin-bottom: 20px;
   border: none;
   border-radius: 5px;
   background: rgba(255, 255, 255, 0.2);
   color: var(--light-text);
-  font-size: 1em;
+  font-size: 1.1rem; /* Readable size */
 }
 
 .input-field:focus {
@@ -337,18 +348,19 @@ textarea.input-field {
 
 .nav-buttons {
   display: flex;
-  gap: 10px;
+  gap: 15px; /* More spacing */
   justify-content: flex-end;
 }
 
 .back-btn,
 .next-btn,
 .send-btn {
-  padding: 10px 20px;
+  padding: 12px 24px; /* More padding */
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: transform 0.2s, background 0.2s;
+  font-size: 1.1rem; /* Readable size */
 }
 
 .back-btn {
@@ -378,11 +390,12 @@ textarea.input-field {
   background: rgba(255, 255, 255, 0.15);
   padding: 15px;
   border-radius: 5px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .review p {
-  margin: 5px 0;
+  margin: 10px 0; /* More spacing */
+  font-size: 1.1rem; /* Readable size */
 }
 
 .confirmation {
@@ -393,11 +406,12 @@ textarea.input-field {
 .home-link {
   display: inline-block;
   margin-top: 20px;
-  padding: 10px 20px;
+  padding: 12px 24px; /* More padding */
   background: var(--accent-teal);
   color: var(--dark-bg);
   text-decoration: none;
   border-radius: 5px;
+  font-size: 1.1rem; /* Readable size */
 }
 
 .home-link:hover {
@@ -406,7 +420,7 @@ textarea.input-field {
 
 .contact-footer p {
   text-align: center;
-  font-size: 0.9em;
+  font-size: 1rem; /* Readable size */
   color: #bbb;
 }
 
@@ -467,6 +481,7 @@ textarea.input-field {
 
   .cta-btn {
     width: 100%;
+    margin: 5px 0;
   }
 
   .footer {
