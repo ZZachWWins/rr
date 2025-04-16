@@ -10,7 +10,7 @@ function Header() {
         <div className="md:hidden">
           <button onClick={() => setIsOpen(!isOpen)} className="toggle-btn">
             <span className="sr-only">{isOpen ? "Click here to close menu" : "Click here for menu"}</span>
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"} />
             </svg>
           </button>

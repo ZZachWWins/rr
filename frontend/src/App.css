@@ -105,7 +105,7 @@ body {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid var(--glass-border);
   border-radius: 5px;
-  padding: 3px;
+  padding: 2px; /* Reduced padding */
   transition: var(--transition);
 }
 
@@ -116,7 +116,8 @@ body {
 
 .hero {
   text-align: center;
-  padding: 120px 20px 40px; /* Increased padding to ensure no overlap */
+  padding: 40px 20px; /* Reduced top padding since margin-top handles spacing */
+  margin-top: 60px; /* Added to push hero below header */
   background-size: cover;
   background-position: center;
   color: var(--light-text);
@@ -492,7 +493,8 @@ textarea.input-field {
 
 @media (max-width: 768px) {
   .hero {
-    padding: 120px 15px 40px; /* Increased padding for mobile */
+    padding: 40px 15px; /* Adjusted for mobile */
+    margin-top: 60px; /* Ensure same margin on mobile */
   }
 
   .hero h1 {
@@ -510,7 +512,7 @@ textarea.input-field {
 
   .nav-menu {
     position: absolute;
-    top: 36px; /* Adjusted for smaller header */
+    top: 36px;
     right: 12px;
     background: var(--dark-bg);
     border: 1px solid var(--glass-border);
