@@ -11,7 +11,8 @@ import RefundCalculator from "./components/RefundCalculator";
 import UserAgreement from "./components/UserAgreement";
 import Testimonials from "./components/Testimonials";
 import Contact from "./components/Contact";
-import Footer from "./components/Footer";
+import TopBanner from "./components/TopBanner";
+import Footer from "./components/Footer"; // Ensure this is used
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -34,6 +35,7 @@ function App() {
   return (
     <Router>
       <div className="app">
+        <TopBanner />
         <Header />
         <nav className="sticky-header bg-gray-800 p-4 shadow-lg">
           <ul className="flex space-x-6 justify-center">
@@ -148,9 +150,7 @@ function App() {
             element={<UserAgreement />}
           />
         </Routes>
-        <footer className="bg-gray-800 text-center py-6">
-          <p>Get Started Now! <a href="/calculator" className="text-teal-300 hover:underline">Calculate Your Refund</a></p>
-        </footer>
+        <Footer /> {/* Ensure Footer is rendered */}
       </div>
     </Router>
   );
