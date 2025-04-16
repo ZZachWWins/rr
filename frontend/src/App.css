@@ -118,7 +118,7 @@ body {
   padding: 40px 20px;
   background-size: cover;
   background-position: center;
-  color: var(--light-text);
+  color: #000000; /* Changed to black */
   position: relative;
   overflow: hidden;
   min-height: 400px;
@@ -131,9 +131,9 @@ body {
   background: linear-gradient(45deg, var(--accent-teal), var(--accent-gold));
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
+  color: transparent; /* Keeps gradient effect */
   line-height: 1.2;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), -2px -2px 4px rgba(0, 0, 0, 0.5), 2px -2px 4px rgba(0, 0, 0, 0.5), -2px 2px 4px rgba(0, 0, 0, 0.5); /* Outline effect */
 }
 
 .hero p {
@@ -143,6 +143,8 @@ body {
   max-width: 300px;
   margin-left: auto;
   margin-right: auto;
+  color: #000000; /* Changed to black */
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7); /* Slight glow for contrast */
 }
 
 .expert-bubble {
@@ -265,7 +267,7 @@ footer {
   text-align: center;
   padding: 40px 20px;
   background: linear-gradient(180deg, transparent, rgba(var(--primary-blue), 0.25));
-  margin-top: auto; /* Fixed syntax error by replacing '>' with ':' */
+  margin-top: auto;
 }
 
 footer a {
