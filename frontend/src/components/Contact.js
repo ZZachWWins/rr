@@ -12,7 +12,7 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Simulate submission (replace with actual API call in production)
+    // Simulate submission (replace with API call in production)
     setSubmitted(true);
     setTimeout(() => {
       setStep(1);
@@ -24,8 +24,8 @@ const Contact = () => {
   return (
     <div className="contact-container">
       <header className="contact-header glass-container">
-        <h1>Get in Touch with [Friend's Name]</h1>
-        <p>We’re here to help you connect—let’s make it easy!</p>
+        <h1>Get in Touch with Rapid Refunds</h1>
+        <p>We’re here to help with your refund needs—let’s connect!</p>
       </header>
       <nav className="progress-nav">
         <ul>
@@ -39,7 +39,7 @@ const Contact = () => {
           {step === 1 && (
             <div className="step">
               <h2>Step 1: Tell Us About You</h2>
-              <p>Start by sharing your name and email so we know who’s reaching out.</p>
+              <p>Start with your name and email so we can assist you.</p>
               <input
                 type="text"
                 name="name"
@@ -58,7 +58,7 @@ const Contact = () => {
               />
               <button
                 onClick={() => setStep(2)}
-                className="next-btn"
+                className="cta-btn"
                 disabled={!formData.name || !formData.email}
               >
                 Next
@@ -68,7 +68,7 @@ const Contact = () => {
           {step === 2 && (
             <div className="step">
               <h2>Step 2: Share Your Message</h2>
-              <p>What would you like to say? We’ll guide you through it!</p>
+              <p>What do you need help with? Let us know!</p>
               <textarea
                 name="message"
                 value={formData.message}
@@ -77,12 +77,12 @@ const Contact = () => {
                 className="input-field"
               />
               <div className="nav-buttons">
-                <button onClick={() => setStep(1)} className="back-btn">
+                <button onClick={() => setStep(1)} className="cta-btn secondary">
                   Back
                 </button>
                 <button
                   onClick={() => setStep(3)}
-                  className="next-btn"
+                  className="cta-btn"
                   disabled={!formData.message}
                 >
                   Next
@@ -93,17 +93,17 @@ const Contact = () => {
           {step === 3 && (
             <div className="step">
               <h2>Step 3: Review & Send</h2>
-              <p>Double-check your details and hit send when you’re ready!</p>
+              <p>Check your details and send when ready!</p>
               <div className="review">
                 <p><strong>Name:</strong> {formData.name}</p>
                 <p><strong>Email:</strong> {formData.email}</p>
                 <p><strong>Message:</strong> {formData.message}</p>
               </div>
               <div className="nav-buttons">
-                <button onClick={() => setStep(2)} className="back-btn">
+                <button onClick={() => setStep(2)} className="cta-btn secondary">
                   Back
                 </button>
-                <button onClick={handleSubmit} className="send-btn">
+                <button onClick={handleSubmit} className="cta-btn">
                   Send Message
                 </button>
               </div>
@@ -113,17 +113,17 @@ const Contact = () => {
       ) : (
         <div className="confirmation glass-container">
           <h2>Thanks for Reaching Out!</h2>
-          <p>We’ve received your message and will get back to you soon. Want to explore more?</p>
-          <NavLink to="/" className="home-link">
+          <p>We’ve got your message and will reply soon. Back to the homepage?</p>
+          <NavLink to="/" className="cta-btn">
             Back to Home
           </NavLink>
         </div>
       )}
       <footer className="contact-footer glass-container">
-        <p>Contact [Rapid Refund] | [Number for RR] | [RR Email]</p>
+        <p>Contact Rapid Refunds | 1-800-REFUND | support@rapidrefunds.com</p>
       </footer>
     </div>
   );
 };
 
-export default Contact;
+export default Contact
