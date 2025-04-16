@@ -37,68 +37,14 @@ function App() {
       <div className="app">
         <TopBanner />
         <Header />
-        <nav className="sticky-header bg-gray-800 p-4 shadow-lg">
+        <nav className="sticky-header">
           <ul className="flex space-x-6 justify-center">
-            <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  `text-white hover:text-teal-300 ${isActive ? "text-teal-300 font-bold" : ""}`
-                }
-              >
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/upload"
-                className={({ isActive }) =>
-                  `text-white hover:text-teal-300 ${isActive ? "text-teal-300 font-bold" : ""}`
-                }
-              >
-                Upload Docs
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/calculator"
-                className={({ isActive }) =>
-                  `text-white hover:text-teal-300 ${isActive ? "text-teal-300 font-bold" : ""}`
-                }
-              >
-                Calculator
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/testimonials"
-                className={({ isActive }) =>
-                  `text-white hover:text-teal-300 ${isActive ? "text-teal-300 font-bold" : ""}`
-                }
-              >
-                Testimonials
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/contact"
-                className={({ isActive }) =>
-                  `text-white hover:text-teal-300 ${isActive ? "text-teal-300 font-bold" : ""}`
-                }
-              >
-                Contact
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/agreement"
-                className={({ isActive }) =>
-                  `text-white hover:text-teal-300 ${isActive ? "text-teal-300 font-bold" : ""}`
-                }
-              >
-                Agreement
-              </NavLink>
-            </li>
+            <li><NavLink to="/">Home</NavLink></li>
+            <li><NavLink to="/upload">Upload Docs</NavLink></li>
+            <li><NavLink to="/calculator">Calculator</NavLink></li>
+            <li><NavLink to="/testimonials">Testimonials</NavLink></li>
+            <li><NavLink to="/contact">Contact</NavLink></li>
+            <li><NavLink to="/agreement">Agreement</NavLink></li>
           </ul>
         </nav>
         <Routes>
@@ -124,35 +70,19 @@ function App() {
           />
           <Route
             path="/upload"
-            element={
-              <section className="section glass-container">
-                <DocumentUpload />
-              </section>
-            }
+            element={<section className="section glass-container"><DocumentUpload /></section>}
           />
           <Route
             path="/calculator"
-            element={
-              <section className="section glass-container">
-                <RefundCalculator />
-              </section>
-            }
+            element={<section className="section glass-container"><RefundCalculator /></section>}
           />
           <Route
             path="/testimonials"
-            element={
-              <section className="section glass-container">
-                <Testimonials />
-              </section>
-            }
+            element={<section className="section glass-container"><Testimonials /></section>}
           />
           <Route
             path="/contact"
-            element={
-              <section className="section glass-container">
-                <Contact />
-              </section>
-            }
+            element={<Contact />}
           />
           <Route
             path="/agreement"
