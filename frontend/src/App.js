@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes, NavLink } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./App.css";
@@ -37,16 +37,6 @@ function App() {
       <div className="app">
         <TopBanner />
         <Header />
-        <nav className="sticky-header">
-          <ul className="flex space-x-6 justify-center">
-            <li><NavLink to="/">Home</NavLink></li>
-            <li><NavLink to="/upload">Upload Docs</NavLink></li>
-            <li><NavLink to="/calculator">Calculator</NavLink></li>
-            <li><NavLink to="/testimonials">Testimonials</NavLink></li>
-            <li><NavLink to="/contact">Contact</NavLink></li>
-            <li><NavLink to="/agreement">Agreement</NavLink></li>
-          </ul>
-        </nav>
         <Routes>
           <Route
             path="/"
