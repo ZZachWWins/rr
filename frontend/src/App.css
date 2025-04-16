@@ -50,8 +50,7 @@ body {
 }
 
 .sticky-header {
-  position: absolute;
-  top: 0;
+  position: static; /* Changed to static to take up space and not overlap */
   width: 100%;
   z-index: 1000;
   background: var(--glass-bg);
@@ -104,8 +103,8 @@ body {
   color: var(--light-text);
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid var(--glass-border);
-  border-radius: 5px;
-  padding: 1px; /* Further reduced padding */
+  border-radius: 3px;
+  padding: 0.5px;
   transition: var(--transition);
 }
 
@@ -266,7 +265,7 @@ footer {
   text-align: center;
   padding: 40px 20px;
   background: linear-gradient(180deg, transparent, rgba(var(--primary-blue), 0.25));
-  margin-top: auto;
+  margin-top> auto;
 }
 
 footer a {
@@ -510,7 +509,7 @@ textarea.input-field {
 
   .nav-menu {
     position: absolute;
-    top: 36px;
+    top: 100%; /* Position below header */
     right: 12px;
     background: var(--dark-bg);
     border: 1px solid var(--glass-border);
