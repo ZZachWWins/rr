@@ -4,7 +4,14 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./App.css";
 import Header from "./components/Header";
+import Hero from "./components/Hero";
+import RefundTracker from "./components/RefundTracker";
+import DocumentUpload from "./components/DocumentUpload";
+import Testimonials from "./components/Testimonials";
 import Contact from "./components/Contact";
+import DataEntry from "./components/DataEntry";
+import UserAgreement from "./components/UserAgreement";
+import TopBanner from "./components/TopBanner";
 import Footer from "./components/Footer";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -28,11 +35,57 @@ function App() {
   return (
     <Router>
       <div className="app">
+        <TopBanner />
         <Header />
         <Routes>
           <Route
+            path="/"
+            element={
+              <div>
+                <Hero />
+                <section className="section glass-container">
+                  <RefundTracker />
+                </section>
+                <section className="section glass-container">
+                  <DocumentUpload />
+                </section>
+                <section className="section glass-container">
+                  <Testimonials />
+                </section>
+              </div>
+            }
+          />
+          <Route
+            path="/upload"
+            element={
+              <section className="section glass-container">
+                <DocumentUpload />
+              </section>
+            }
+          />
+          <Route
+            path="/calculator"
+            element={
+              <section className="section glass-container">
+                <DataEntry />
+              </section>
+            }
+          />
+          <Route
+            path="/testimonials"
+            element={
+              <section className="section glass-container">
+                <Testimonials />
+              </section>
+            }
+          />
+          <Route
             path="/contact"
             element={<Contact />}
+          />
+          <Route
+            path="/agreement"
+            element={<UserAgreement />}
           />
         </Routes>
         <Footer />

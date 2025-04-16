@@ -3,18 +3,19 @@ import React, { useState } from "react";
 function DataEntry() {
   const [amount, setAmount] = useState("");
   const [agrees, setAgrees] = useState(false);
+  const [result, setResult] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!agrees) return;
     try {
-      const response = await fetch("/api/save-tax-data", {
+      const response = await fetch("/api/RefundCalculator", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ amount, userId: "mock-user" }), // Replace with real user ID
+        body: JSON.stringify({ income: parseFloat(amount), deductions: 0 }),
       });
       const data = await response.json();
-      console.log("Success:", data);
+      setResult(data.refund);
     } catch (error) {
       console.error("Failed:", error);
     }
@@ -42,9 +43,10 @@ function DataEntry() {
           The amounts agree
         </label>
         <button className="cta-btn" type="submit" disabled={!agrees}>
-          Submit
+          Calculate Refund
         </button>
       </form>
+      {result && <p>Estimated Refund: ${result}</p>}
     </div>
   );
 }
