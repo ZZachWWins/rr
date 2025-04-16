@@ -50,7 +50,7 @@ body {
 }
 
 .sticky-header {
-  position: fixed;
+  position: absolute;
   top: 0;
   width: 100%;
   z-index: 1000;
@@ -123,7 +123,6 @@ body {
   position: relative;
   overflow: hidden;
   min-height: 400px;
-  margin-top: 48px; /* Reduced to match smaller header */
 }
 
 .hero h1 {
@@ -221,7 +220,7 @@ body {
 }
 
 .refund-tracker ul {
-  list-style: none;
+  list-styles: none;
   padding: 0;
   display: grid;
   gap: 20px;
@@ -493,7 +492,7 @@ textarea.input-field {
 
 @media (max-width: 768px) {
   .hero {
-    padding: 100px 15px 40px; /* Adjusted for smaller header */
+    padding: 80px 15px 40px;
   }
 
   .hero h1 {
@@ -511,7 +510,7 @@ textarea.input-field {
 
   .nav-menu {
     position: absolute;
-    top: 48px; /* Adjusted for smaller header */
+    top: 48px;
     right: 15px;
     background: var(--dark-bg);
     border: 1px solid var(--glass-border);
