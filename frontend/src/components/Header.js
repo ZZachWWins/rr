@@ -1,36 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
-  const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollPos = window.pageYOffset;
-      const isScrollingUp = prevScrollPos > currentScrollPos;
-      setIsVisible(currentScrollPos > 50 || isScrollingUp); // Show after 50px scroll or when scrolling up
-      setPrevScrollPos(currentScrollPos);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [prevScrollPos]);
 
   return (
-    <header className={`sticky-header ${isVisible ? "visible" : "hidden"}`}>
-      <div className="flex justify-between items-center max-w-6xl mx-auto px-4 py-3">
-        <h1 className="text-2xl font-bold text-white drop-shadow-md">Rapid Refunds</h1>
+    <header className="sticky-header">
+      <div className="flex justify-between items-center max-w-6xl mx-auto px-3 py-2">
+        <h1 className="text-lg font-bold text-white drop-shadow-md">Rapid Refunds</h1>
         <div className="md:hidden">
           <button onClick={() => setIsOpen(!isOpen)} className="toggle-btn">
             <span className="sr-only">{isOpen ? "Click here to close menu" : "Click here for menu"}</span>
-            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"} />
             </svg>
           </button>
         </div>
         <nav className={`nav-menu ${isOpen ? 'nav-open' : 'nav-closed'} md:nav-open`}>
-          <ul className="flex flex-col md:flex-row gap-4">
+          <ul className="flex flex-col md:flex-row gap-3">
             <li><a href="/" className="nav-link">Home</a></li>
             <li><a href="/upload" className="nav-link">Upload Docs</a></li>
             <li><a href="/calculator" className="nav-link">Calculator</a></li>

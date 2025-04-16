@@ -59,16 +59,6 @@ body {
   -webkit-backdrop-filter: blur(15px);
   border-bottom: 1px solid var(--glass-border);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transform: translateY(0);
-  transition: transform 0.3s ease-in-out;
-}
-
-.sticky-header.hidden {
-  transform: translateY(-100%);
-}
-
-.sticky-header.visible {
-  transform: translateY(0);
 }
 
 .nav-menu {
@@ -90,17 +80,17 @@ body {
 .nav-menu ul {
   list-style: none;
   margin: 0;
-  padding: 10px;
+  padding: 8px;
 }
 
 .nav-link {
   color: var(--light-text);
   text-decoration: none;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1rem;
   transition: var(--transition);
   display: block;
-  padding: 8px 12px;
+  padding: 6px 10px;
   border-radius: 5px;
 }
 
@@ -115,7 +105,7 @@ body {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid var(--glass-border);
   border-radius: 5px;
-  padding: 6px;
+  padding: 4px;
   transition: var(--transition);
 }
 
@@ -133,7 +123,7 @@ body {
   position: relative;
   overflow: hidden;
   min-height: 400px;
-  margin-top: 60px; /* Offset for fixed header */
+  margin-top: 48px; /* Reduced to match smaller header */
 }
 
 .hero h1 {
@@ -503,7 +493,7 @@ textarea.input-field {
 
 @media (max-width: 768px) {
   .hero {
-    padding: 120px 15px 40px; /* More padding to account for fixed header */
+    padding: 100px 15px 40px; /* Adjusted for smaller header */
   }
 
   .hero h1 {
@@ -516,12 +506,12 @@ textarea.input-field {
   }
 
   .sticky-header {
-    padding: 10px 15px;
+    padding: 8px 15px;
   }
 
   .nav-menu {
     position: absolute;
-    top: 60px;
+    top: 48px; /* Adjusted for smaller header */
     right: 15px;
     background: var(--dark-bg);
     border: 1px solid var(--glass-border);
@@ -534,12 +524,12 @@ textarea.input-field {
   .nav-menu ul {
     flex-direction: column;
     gap: 5px;
-    padding: 10px;
+    padding: 8px;
   }
 
   .nav-link {
-    font-size: 1rem;
-    padding: 10px;
+    font-size: 0.9rem;
+    padding: 8px;
   }
 
   .glass-container {
