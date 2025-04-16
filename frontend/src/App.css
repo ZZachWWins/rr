@@ -53,34 +53,64 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
   background: var(--glass-bg);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.nav-menu {
+  transition: var(--transition);
+}
+
+.nav-open {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nav-closed {
+  display: none;
+  opacity: 0;
+  transform: translateY(-10px);
 }
 
 .nav-menu ul {
   list-style: none;
-  display: flex;
-  gap: 20px;
   margin: 0;
-  padding: 0;
+  padding: 10px;
 }
 
-.nav-menu a {
+.nav-link {
   color: var(--light-text);
   text-decoration: none;
   font-weight: 600;
   font-size: 1.1rem;
   transition: var(--transition);
+  display: block;
+  padding: 8px 12px;
+  border-radius: 5px;
 }
 
-.nav-menu a:hover,
+.nav-link:hover,
 .active-link {
   color: var(--accent-gold);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.toggle-btn {
+  color: var(--light-text);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--glass-border);
+  border-radius: 5px;
+  padding: 6px;
+  transition: var(--transition);
+}
+
+.toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
 }
 
 .hero {
@@ -461,7 +491,7 @@ textarea.input-field {
 
 @media (max-width: 768px) {
   .hero {
-    padding: 40px 15px;
+    padding: 80px 15px; /* More padding to avoid overlap */
   }
 
   .hero h1 {
@@ -477,14 +507,27 @@ textarea.input-field {
     padding: 10px 15px;
   }
 
-  .sticky-header ul {
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
+  .nav-menu {
+    position: absolute;
+    top: 60px;
+    right: 15px;
+    background: var(--dark-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    width: 200px;
+    z-index: 999;
   }
 
-  .sticky-header a {
+  .nav-menu ul {
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+  }
+
+  .nav-link {
     font-size: 1rem;
+    padding: 10px;
   }
 
   .glass-container {
