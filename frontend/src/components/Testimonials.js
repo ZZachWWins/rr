@@ -3,44 +3,42 @@ import { gsap } from "gsap";
 
 const Testimonials = () => {
   useEffect(() => {
-    const testimonials = gsap.utils.toArray(".testimonial");
+    const testimonials = gsap.utils.toArray(".testimonial-card");
     testimonials.forEach((el, index) => {
       gsap.fromTo(
         el,
-        { opacity: 0, y: 50 },
+        { opacity: 0, y: 50, scale: 0.9 },
         {
           opacity: 1,
           y: 0,
-          duration: 1,
-          delay: index * 0.3,
+          scale: 1,
+          duration: 1.2,
+          delay: index * 0.4,
+          ease: "elastic.out(1, 0.5)",
           scrollTrigger: {
             trigger: el,
-            start: "top 80%",
+            start: "top 85%",
           },
         }
       );
     });
-    gsap.to(".testimonial", {
-      opacity: 0.3,
-      stagger: 2,
-      repeat: -1,
-      yoyo: true,
-      ease: "power1.inOut",
-    });
   }, []);
 
   return (
-    <section className="section glass-container text-center py-10" style={{ backgroundImage: `url(https://res.cloudinary.com/dbraufdni/image/upload/v1654321/istockphoto-1325860496-612x612_acblex)` }}>
-      <h2 className="text-3xl font-bold mb-6 text-white">What Our Clients Say</h2>
-      <div className="space-y-6 relative" style={{ backgroundImage: `url(https://res.cloudinary.com/dbraufdni/image/upload/v1654321/istockphoto-1367863135-612x612_zfxnjd)`, backgroundBlendMode: 'overlay', opacity: 0.7 }}>
-        <div className="testimonial p-4 bg-white bg-opacity-10 rounded-lg text-white">
-          "Fastest refund I’ve ever gotten! Highly recommend!" - Jane D.
+    <section className="section glass-container text-center py-12" style={{ backgroundImage: `url(https://res.cloudinary.com/dbraufdni/image/upload/v1654321/istockphoto-1325860496-612x612_acblex)` }}>
+      <h2 className="text-4xl font-bold mb-8 text-white drop-shadow-md">What Our Clients Say</h2>
+      <div className="testimonials-overlay grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="testimonial-card p-6 bg-white bg-opacity-95 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-gray-900">
+          <p className="text-lg italic">"Fastest refund I've ever gotten! Highly recommend!"</p>
+          <p className="mt-4 font-semibold text-right">- Jane D.</p>
         </div>
-        <div className="testimonial p-4 bg-white bg-opacity-10 rounded-lg text-white">
-          "Easy process, secure, and great support. 5 stars!" - John S.
+        <div className="testimonial-card p-6 bg-white bg-opacity-95 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-gray-900">
+          <p className="text-lg italic">"Easy process, secure, and great support. 5 stars!"</p>
+          <p className="mt-4 font-semibold text-right">- John S.</p>
         </div>
-        <div className="testimonial p-4 bg-white bg-opacity-10 rounded-lg text-white">
-          "Saved me hours with the calculator tool. Awesome!" - Mike R.
+        <div className="testimonial-card p-6 bg-white bg-opacity-95 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-gray-900">
+          <p className="text-lg italic">"Saved me hours with the calculator tool. Awesome!"</p>
+          <p className="mt-4 font-semibold text-right">- Mike R.</p>
         </div>
       </div>
     </section>

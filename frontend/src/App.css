@@ -103,6 +103,7 @@ body {
   background-clip: text;
   color: transparent;
   line-height: 1.2; /* Tighter line height for headings */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Enhance readability */
 }
 
 .hero p {
@@ -122,6 +123,7 @@ body {
   margin-top: 20px;
   color: #333;
   font-size: 1rem; /* Readable size */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .cta-btn {
@@ -264,6 +266,59 @@ footer a:hover {
   justify-content: space-between;
   align-items: center;
   font-size: 1rem; /* Readable size */
+}
+
+/* Testimonials-specific styles */
+.testimonials-overlay {
+  background: rgba(0, 0, 0, 0.4); /* Slightly lighter overlay for balance */
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.testimonial-card {
+  font-size: 1.2rem; /* Larger text for readability */
+  line-height: 1.6; /* Better line spacing */
+  max-width: 100%;
+  margin: 0 auto 20px; /* Centered with spacing */
+  transition: var(--transition);
+  background: rgba(255, 255, 255, 0.95); /* Solid background for text */
+  color: #333; /* Dark text for contrast */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  text-align: left; /* Left-aligned for a modern look */
+}
+
+.testimonial-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.testimonial-card p:first-child {
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+.testimonial-card p:last-child {
+  margin-top: 10px;
+  font-weight: 600;
+  text-align: right;
+}
+
+/* Ensure hero and other sections maintain readability */
+.hero,
+.section {
+  color: var(--light-text);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); /* Slight shadow for text clarity */
+}
+
+.hero p,
+.section p {
+  font-size: 1.2rem;
+  opacity: 1;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Contact Page Styles */
@@ -431,11 +486,11 @@ textarea.input-field {
   }
 
   .hero h1 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
 
   .hero p {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   .sticky-header {
@@ -490,5 +545,18 @@ textarea.input-field {
 
   .footer-content p {
     font-size: 0.9rem;
+  }
+
+  .testimonial-card {
+    font-size: 1.1rem;
+    padding: 15px;
+  }
+
+  .testimonials-overlay {
+    padding: 10px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr; /* Stack cards on mobile */
   }
 }
