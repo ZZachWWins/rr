@@ -105,7 +105,7 @@ body {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid var(--glass-border);
   border-radius: 5px;
-  padding: 2px; /* Reduced padding */
+  padding: 1px; /* Further reduced padding */
   transition: var(--transition);
 }
 
@@ -116,8 +116,7 @@ body {
 
 .hero {
   text-align: center;
-  padding: 40px 20px; /* Reduced top padding since margin-top handles spacing */
-  margin-top: 60px; /* Added to push hero below header */
+  padding: 40px 20px;
   background-size: cover;
   background-position: center;
   color: var(--light-text);
@@ -493,8 +492,7 @@ textarea.input-field {
 
 @media (max-width: 768px) {
   .hero {
-    padding: 40px 15px; /* Adjusted for mobile */
-    margin-top: 60px; /* Ensure same margin on mobile */
+    padding: 40px 15px;
   }
 
   .hero h1 {
