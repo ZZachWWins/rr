@@ -7,6 +7,14 @@ function UserAgreement() {
   const [agreed, setAgreed] = useState(false);
 
   useEffect(() => {
+    // Check if the user has already agreed
+    const hasAgreed = localStorage.getItem("agreementAccepted");
+    if (hasAgreed) {
+      navigate("/"); // Redirect to homepage if already accepted
+      return; // Prevent further rendering
+    }
+
+    // Run GSAP animation only if the user hasn't agreed
     gsap.from(".agreement-modal", {
       opacity: 0,
       y: 50,
@@ -14,11 +22,12 @@ function UserAgreement() {
       duration: 0.5,
       ease: "power3.out",
     });
-  }, []);
+  }, [navigate]);
 
   const handleAgree = () => {
+    localStorage.setItem("agreementAccepted", "true"); // Persist agreement
     setAgreed(true);
-    // Delay navigation to ensure user sees confirmation
+    // Delay navigation to show confirmation message
     setTimeout(() => navigate("/"), 1000);
   };
 
