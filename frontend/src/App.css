@@ -80,17 +80,17 @@ body {
 .nav-menu ul {
   list-style: none;
   margin: 0;
-  padding: 8px;
+  padding: 6px;
 }
 
 .nav-link {
   color: var(--light-text);
   text-decoration: none;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.9rem;
   transition: var(--transition);
   display: block;
-  padding: 6px 10px;
+  padding: 4px 8px;
   border-radius: 5px;
 }
 
@@ -105,7 +105,7 @@ body {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid var(--glass-border);
   border-radius: 5px;
-  padding: 4px;
+  padding: 3px;
   transition: var(--transition);
 }
 
@@ -116,7 +116,7 @@ body {
 
 .hero {
   text-align: center;
-  padding: 80px 20px 40px;
+  padding: 120px 20px 40px; /* Increased padding to ensure no overlap */
   background-size: cover;
   background-position: center;
   color: var(--light-text);
@@ -220,7 +220,7 @@ body {
 }
 
 .refund-tracker ul {
-  list-styles: none;
+  list-style: none;
   padding: 0;
   display: grid;
   gap: 20px;
@@ -397,7 +397,7 @@ footer a:hover {
   margin-bottom: 20px;
   border: none;
   border-radius: 5px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 229, 255, 0.2);
   color: var(--light-text);
   font-size: 1.1rem;
 }
@@ -492,7 +492,7 @@ textarea.input-field {
 
 @media (max-width: 768px) {
   .hero {
-    padding: 80px 15px 40px;
+    padding: 120px 15px 40px; /* Increased padding for mobile */
   }
 
   .hero h1 {
@@ -505,30 +505,30 @@ textarea.input-field {
   }
 
   .sticky-header {
-    padding: 8px 15px;
+    padding: 6px 12px;
   }
 
   .nav-menu {
     position: absolute;
-    top: 48px;
-    right: 15px;
+    top: 36px; /* Adjusted for smaller header */
+    right: 12px;
     background: var(--dark-bg);
     border: 1px solid var(--glass-border);
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    width: 200px;
+    width: 180px;
     z-index: 999;
   }
 
   .nav-menu ul {
     flex-direction: column;
-    gap: 5px;
-    padding: 8px;
+    gap: 4px;
+    padding: 6px;
   }
 
   .nav-link {
-    font-size: 0.9rem;
-    padding: 8px;
+    font-size: 0.8rem;
+    padding: 6px;
   }
 
   .glass-container {
