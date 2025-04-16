@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./App.css";
 import Header from "./components/Header";
 import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -34,6 +35,7 @@ function App() {
             element={<Contact />}
           />
         </Routes>
+        <Footer />
       </div>
     </Router>
   );
