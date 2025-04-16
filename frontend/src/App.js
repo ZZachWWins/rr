@@ -9,7 +9,7 @@ import RefundTracker from "./components/RefundTracker";
 import DocumentUpload from "./components/DocumentUpload";
 import Testimonials from "./components/Testimonials";
 import Contact from "./components/Contact";
-import DataEntry from "./components/DataEntry";
+import PricingCalculator from "./components/PricingCalculator";
 import UserAgreement from "./components/UserAgreement";
 import TopBanner from "./components/TopBanner";
 import Footer from "./components/Footer";
@@ -67,7 +67,7 @@ function App() {
             path="/calculator"
             element={
               <section className="section glass-container">
-                <DataEntry />
+                <PricingCalculator />
               </section>
             }
           />

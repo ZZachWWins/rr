@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { useNavigate } from "react-router-dom";
 
 function UserAgreement() {
   const navigate = useNavigate();
+  const [agreed, setAgreed] = useState(false);
 
   useEffect(() => {
     gsap.from(".agreement-modal", {
@@ -14,6 +15,12 @@ function UserAgreement() {
       ease: "power3.out",
     });
   }, []);
+
+  const handleAgree = () => {
+    setAgreed(true);
+    // Delay navigation to ensure user sees confirmation
+    setTimeout(() => navigate("/"), 1000);
+  };
 
   return (
     <div className="agreement-modal glass-container">
@@ -31,15 +38,18 @@ function UserAgreement() {
         <strong>Our Promise:</strong> Secure, professional filing with bank-level
         encryption.
       </p>
-      <button
-        className="cta-btn"
-        onClick={() => navigate("/")}
-      >
-        I Agree & Continue
-      </button>
-      <button className="cta-btn secondary" onClick={() => navigate("/")}>
-        Cancel
-      </button>
+      {!agreed ? (
+        <>
+          <button className="cta-btn" onClick={handleAgree}>
+            I Agree & Continue
+          </button>
+          <button className="cta-btn secondary" onClick={() => navigate("/")}>
+            Cancel
+          </button>
+        </>
+      ) : (
+        <p className="text-center mt-4 text-green-500">Agreement accepted! Redirecting...</p>
+      )}
     </div>
   );
 }
