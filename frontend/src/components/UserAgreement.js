@@ -7,14 +7,15 @@ function UserAgreement() {
   const [agreed, setAgreed] = useState(false);
 
   useEffect(() => {
-    // Check if the user has already agreed
+    console.log("Checking agreement status...");
     const hasAgreed = localStorage.getItem("agreementAccepted");
     if (hasAgreed) {
-      navigate("/"); // Redirect to homepage if already accepted
-      return; // Prevent further rendering
+      console.log("User has already agreed, redirecting...");
+      navigate("/");
+      return; // Exit early to prevent animation
     }
 
-    // Run GSAP animation only if the user hasn't agreed
+    console.log("Animating modal...");
     gsap.from(".agreement-modal", {
       opacity: 0,
       y: 50,
@@ -25,17 +26,21 @@ function UserAgreement() {
   }, [navigate]);
 
   const handleAgree = () => {
-    localStorage.setItem("agreementAccepted", "true"); // Persist agreement
+    console.log("User clicked Agree, setting agreement...");
+    localStorage.setItem("agreementAccepted", "true");
     setAgreed(true);
-    // Delay navigation to show confirmation message
-    setTimeout(() => navigate("/"), 1000);
+    console.log("Delaying redirect for 1 second...");
+    setTimeout(() => {
+      console.log("Redirecting to homepage...");
+      navigate("/");
+    }, 1000);
   };
 
   return (
     <div className="agreement-modal glass-container">
       <h2>Rapid Refunds User Agreement</h2>
       <p>
-        <strong>Free to File:</strong> No upfront costs. We handle filing.
+        <strong>Free to File:</strong> Lowest upfront costs. We handle filing.
       </p>
       <p>
         <strong>Refund Handling:</strong> We retain 20% of your refund as our fee.
