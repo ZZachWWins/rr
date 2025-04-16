@@ -1,0 +1,97 @@
+/* App.css */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: url("your-cloudinary-star-image.jpg") repeat,
+    linear-gradient(135deg, #1a1a2e, #16213e);
+  color: #fff;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.glass-container {
+  background: rgba(50, 50, 50, 0.2); /* Dark grey glassmorphism */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sticky-header nav a {
+  color: #fff;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.hero {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.hero-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cta-btn {
+  background: linear-gradient(45deg, #ff4b5c, #ff8c00);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.cta-btn:hover {
+  transform: scale(1.05);
+}
+
+.cta-btn.secondary {
+  background: #555;
+}
+
+.section {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.refund-tracker, .document-upload, .data-entry {
+  text-align: center;
+}
+
+.refund-tracker ul {
+  list-style: none;
+  padding: 0;
+}
+
+.agreement-modal {
+  max-width: 600px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+}
+
+footer a {
+  color: #ff8c00;
+  text-decoration: none;
+}
