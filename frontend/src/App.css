@@ -2,23 +2,20 @@
 :root {
   --primary-blue: #005f99;
   --accent-teal: #00c4b4;
-  --accent-gold: #ffd700; /* New gold accent for money vibe */
-  --dark-bg: #1a2533; /* Slightly lighter for contrast */
+  --dark-bg: #121926;
   --light-text: #e6f0fa;
-  --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-  --glass-border: rgba(255, 255, 255, 0.15);
-  --shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   --transition: all 0.3s ease;
-  --font-heading: 'Poppins', sans-serif; /* New heading font */
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 body {
   background: linear-gradient(135deg, var(--primary-blue), var(--dark-bg));
   margin: 0;
-  font-family: var(--font-body);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   color: var(--light-text);
-  line-height: 1.7; /* Improved readability */
+  line-height: 1.6;
   overflow-x: hidden;
 }
 
@@ -30,19 +27,19 @@ body {
 
 .glass-container {
   background: var(--glass-bg);
-  backdrop-filter: blur(15px); /* Increased blur for depth */
-  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
   box-shadow: var(--shadow);
-  padding: 32px; /* More padding for breathing room */
-  border-radius: 20px;
-  margin: 32px;
+  padding: 24px;
+  border-radius: 16px;
+  margin: 24px;
   transition: var(--transition);
 }
 
 .glass-container:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 56px rgba(0, 0, 0, 0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
 }
 
 .sticky-header {
@@ -50,10 +47,10 @@ body {
   top: 0;
   z-index: 100;
   background: var(--glass-bg);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--glass-border);
-  padding: 20px 32px;
+  padding: 16px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -62,10 +59,10 @@ body {
 
 .sticky-header nav a {
   color: var(--light-text);
-  margin: 0 20px;
+  margin: 0 16px;
   text-decoration: none;
-  font-weight: 600;
-  font-size: 1.2rem;
+  font-weight: 500;
+  font-size: 1.1rem;
   position: relative;
   transition: var(--transition);
 }
@@ -74,11 +71,11 @@ body {
   content: '';
   position: absolute;
   width: 0;
-  height: 3px;
-  bottom: -6px;
+  height: 2px;
+  bottom: -4px;
   left: 0;
-  background: var(--accent-gold); /* Gold underline for nav */
-  transition: width 0.4s ease;
+  background: var(--accent-teal);
+  transition: width 0.3s ease;
 }
 
 .sticky-header nav a:hover::after {
@@ -87,64 +84,46 @@ body {
 
 .hero {
   text-align: center;
-  padding: 100px 32px;
-  background: linear-gradient(180deg, rgba(0, 95, 153, 0.25), transparent);
+  padding: 80px 24px;
+  background: linear-gradient(180deg, rgba(0, 95, 153, 0.2), transparent);
 }
 
 .hero-content {
-  max-width: 800px;
+  max-width: 720px;
   margin: 0 auto;
 }
 
 .hero h1 {
-  font-family: var(--font-heading);
-  font-size: 3.5rem;
-  margin-bottom: 20px;
-  background: linear-gradient(45deg, var(--accent-teal), var(--accent-gold));
+  font-size: 3rem;
+  margin-bottom: 16px;
+  background: linear-gradient(45deg, var(--accent-teal), #00ffdd);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .hero p {
-  font-size: 1.3rem;
-  opacity: 0.85;
-  margin-bottom: 40px;
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-bottom: 32px;
 }
 
 .cta-btn {
-  background: linear-gradient(45deg, var(--accent-teal), var(--accent-gold));
+  background: linear-gradient(45deg, var(--accent-teal), #00ffdd);
   color: var(--dark-bg);
   border: none;
-  padding: 14px 28px;
-  border-radius: 10px;
-  font-size: 1.2rem;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
   transition: var(--transition);
   box-shadow: var(--shadow);
-  position: relative;
-  overflow: hidden;
-}
-
-.cta-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  transition: left 0.5s ease;
-}
-
-.cta-btn:hover::before {
-  left: 100%;
 }
 
 .cta-btn:hover {
-  transform: scale(1.08);
-  background: linear-gradient(45deg, var(--accent-gold), var(--accent-teal));
+  transform: scale(1.05);
+  background: linear-gradient(45deg, #00ffdd, var(--accent-teal));
 }
 
 .cta-btn.secondary {
@@ -154,13 +133,13 @@ body {
 }
 
 .cta-btn.secondary:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .section {
-  max-width: 1000px;
+  max-width: 960px;
   margin: 0 auto;
-  padding: 56px 32px;
+  padding: 48px 24px;
 }
 
 .refund-tracker,
@@ -173,13 +152,13 @@ body {
   list-style: none;
   padding: 0;
   display: grid;
-  gap: 20px;
+  gap: 16px;
 }
 
 .progress-bar {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 10px;
-  height: 28px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  height: 24px;
   overflow: hidden;
   position: relative;
 }
@@ -190,21 +169,21 @@ body {
   top: 0;
   left: 0;
   height: 100%;
-  background: linear-gradient(90deg, var(--accent-teal), var(--accent-gold));
-  transition: width 1.2s ease-out;
+  background: linear-gradient(90deg, var(--accent-teal), #00ffdd);
+  transition: width 1s ease-out;
 }
 
 .agreement-modal {
-  max-width: 800px;
-  margin: 56px auto;
+  max-width: 720px;
+  margin: 48px auto;
   text-align: center;
-  animation: slideIn 0.6s ease-out;
+  animation: slideIn 0.5s ease-out;
 }
 
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(24px);
   }
   to {
     opacity: 1;
@@ -214,55 +193,42 @@ body {
 
 footer {
   text-align: center;
-  padding: 40px 32px;
-  background: linear-gradient(180deg, transparent, rgba(0, 95, 153, 0.25));
+  padding: 32px 24px;
+  background: linear-gradient(180deg, transparent, rgba(0, 95, 153, 0.2));
 }
 
 footer a {
-  color: var(--accent-gold);
+  color: var(--accent-teal);
   text-decoration: none;
   font-weight: 500;
   transition: var(--transition);
 }
 
 footer a:hover {
-  color: #ffea00;
+  color: #00ffdd;
 }
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
-  .hero {
-    padding: 60px 20px;
-  }
-
   .hero h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 
   .hero p {
-    font-size: 1.1rem;
-  }
-
-  .sticky-header {
-    padding: 16px 20px;
+    font-size: 1rem;
   }
 
   .sticky-header nav a {
     font-size: 1rem;
-    margin: 0 10px;
+    margin: 0 8px;
   }
 
   .glass-container {
-    padding: 20px;
-    margin: 20px;
+    padding: 16px;
+    margin: 16px;
   }
 
   .section {
-    padding: 32px 20px;
-  }
-
-  .cta-btn {
-    padding: 12px 24px;
-    font-size: 1.1rem;
+    padding: 24px 16px;
   }
 }
