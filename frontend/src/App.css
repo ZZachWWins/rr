@@ -118,7 +118,7 @@ body {
   padding: 40px 20px;
   background-size: cover;
   background-position: center;
-  color: #000000; /* Changed to black */
+  color: #000000;
   position: relative;
   overflow: hidden;
   min-height: 400px;
@@ -128,12 +128,12 @@ body {
   font-family: var(--font-heading);
   font-size: 2.5rem;
   margin-bottom: 16px;
-  background: linear-gradient(45deg, var(--accent-teal), var(--accent-gold));
+  background: linear-gradient(45deg, #2e7d32, #66bb6a); /* Green gradient */
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent; /* Keeps gradient effect */
+  color: transparent;
   line-height: 1.2;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), -2px -2px 4px rgba(0, 0, 0, 0.5), 2px -2px 4px rgba(0, 0, 0, 0.5), -2px 2px 4px rgba(0, 0, 0, 0.5); /* Outline effect */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), -2px -2px 4px rgba(0, 0, 0, 0.3), 2px -2px 4px rgba(0, 0, 0, 0.3), -2px 2px 4px rgba(0, 0, 0, 0.3); /* Slightly lighter outline for readability */
 }
 
 .hero p {
@@ -143,8 +143,8 @@ body {
   max-width: 300px;
   margin-left: auto;
   margin-right: auto;
-  color: #000000; /* Changed to black */
-  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7); /* Slight glow for contrast */
+  color: #000000;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7);
 }
 
 .expert-bubble {
@@ -171,6 +171,11 @@ body {
   box-shadow: var(--shadow);
   position: relative;
   overflow: hidden;
+}
+
+.cta-header {
+  padding: 6px 12px;
+  font-size: 0.9rem;
 }
 
 .cta-btn::before {
@@ -218,13 +223,12 @@ body {
 .document-upload,
 .data-entry {
   text-align: center;
+  color: #000000;
 }
 
-.refund-tracker ul {
-  list-style: none;
-  padding: 0;
-  display: grid;
-  gap: 20px;
+.refund-tracker h2,
+.refund-tracker p {
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7), -2px -2px 4px rgba(255, 255, 255, 0.7), 2px -2px 4px rgba(255, 255, 255, 0.7), -2px 2px 4px rgba(255, 255, 255, 0.7);
 }
 
 .progress-bar {
