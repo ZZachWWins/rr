@@ -48,49 +48,82 @@ body {
   box-shadow: 0 16px 56px rgba(0, 0, 0, 0.35);
 }
 
+:root {
+  --primary-blue: #005f99;
+  --light-text: #e6f0fa;
+  --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+  --transition: all 0.3s ease;
+}
+
+body {
+  background: linear-gradient(135deg, var(--primary-blue), #1a2533);
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--light-text);
+  min-height: 100vh;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.glass-container {
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+  padding: 20px;
+  border-radius: 10px;
+}
+
 .sticky-header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--glass-bg);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border-bottom: 1px solid var(--glass-border);
-  padding: 20px 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: var(--shadow);
+  padding: 15px 30px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 }
 
-.sticky-header ul {
+.nav-menu ul {
   list-style: none;
   display: flex;
-  gap: 24px;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
 }
 
-.sticky-header a {
+.nav-menu a {
   color: var(--light-text);
   text-decoration: none;
   font-weight: 600;
-  font-size: 1.2rem;
-  position: relative;
   transition: var(--transition);
 }
 
-.sticky-header a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 3px;
-  bottom: -6px;
-  left: 0;
-  background: var(--accent-gold); /* Gold underline for nav */
-  transition: width 0.4s ease;
+.nav-menu a:hover,
+.active-link {
+  color: #ffd700; /* Gold accent for active/hover */
 }
 
-.sticky-header a:hover::after {
-  width: 100%;
+@media (max-width: 768px) {
+  .sticky-header {
+    flex-direction: column;
+    padding: 10px;
+  }
+  .nav-menu ul {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
 }
 
 .hero {
