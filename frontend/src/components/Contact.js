@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import "./ContactPage.css";
 
-const ContactPage = () => {
+const Contact = () => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
@@ -121,10 +120,10 @@ const ContactPage = () => {
         </div>
       )}
       <footer className="contact-footer glass-container">
-        <p>Contact [Rapid Refund] | [-] | [-]</p>
+        <p>Contact [Rapid Refund] | [Number for RR] | [RR Email]</p>
       </footer>
     </div>
   );
 };
 
-export default ContactPage;
+export default Contact;
