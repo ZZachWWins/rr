@@ -11,13 +11,14 @@
   --transition: all 0.3s ease;
   --font-heading: 'Poppins', sans-serif; /* New heading font */
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --cta-blue: #0073aa; /* TurboTax blue */
 }
 
 body {
-  background: linear-gradient(135deg, var(--primary-blue), var(--dark-bg));
+  background: linear-gradient(135deg, #f5f7fa, #e0e7f0); /* TurboTax light gradient */
   margin: 0;
   font-family: var(--font-body);
-  color: var(--light-text);
+  color: #333;
   line-height: 1.7; /* Improved readability */
   overflow-x: hidden;
   min-height: 100vh; /* Ensure full height */
@@ -46,39 +47,6 @@ body {
 .glass-container:hover {
   transform: translateY(-6px);
   box-shadow: 0 16px 56px rgba(0, 0, 0, 0.35);
-}
-
-:root {
-  --primary-blue: #005f99;
-  --light-text: #e6f0fa;
-  --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-  --glass-border: rgba(255, 255, 255, 0.15);
-  --shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
-  --transition: all 0.3s ease;
-}
-
-body {
-  background: linear-gradient(135deg, var(--primary-blue), #1a2533);
-  margin: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: var(--light-text);
-  min-height: 100vh;
-}
-
-.app {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.glass-container {
-  background: var(--glass-bg);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--shadow);
-  padding: 20px;
-  border-radius: 10px;
 }
 
 .sticky-header {
@@ -111,31 +79,18 @@ body {
 
 .nav-menu a:hover,
 .active-link {
-  color: #ffd700; /* Gold accent for active/hover */
-}
-
-@media (max-width: 768px) {
-  .sticky-header {
-    flex-direction: column;
-    padding: 10px;
-  }
-  .nav-menu ul {
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
-  }
+  color: var(--accent-gold); /* Gold accent for active/hover */
 }
 
 .hero {
   text-align: center;
   padding: 100px 32px;
-  background: linear-gradient(180deg, rgba(0, 95, 153, 0.25), transparent);
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
   min-height: 400px; /* Ensure visibility */
-}
-
-.hero-content {
-  max-width: 800px;
-  margin: 0 auto;
 }
 
 .hero h1 {
@@ -154,9 +109,18 @@ body {
   margin-bottom: 40px;
 }
 
+.expert-bubble {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 10px;
+  border-radius: 5px;
+  display: inline-block;
+  margin-top: 20px;
+  color: #333;
+}
+
 .cta-btn {
-  background: linear-gradient(45deg, var(--accent-teal), var(--accent-gold));
-  color: var(--dark-bg);
+  background: var(--cta-blue); /* TurboTax blue */
+  color: #fff;
   border: none;
   padding: 14px 28px;
   border-radius: 10px;
@@ -197,6 +161,11 @@ body {
 
 .cta-btn.secondary:hover {
   background: rgba(255, 255, 255, 0.15);
+}
+
+.cta-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .section {
@@ -295,6 +264,9 @@ footer a:hover {
   color: var(--light-text);
   font-family: var(--font-body);
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .contact-header,
@@ -415,6 +387,7 @@ textarea.input-field {
 
 .confirmation {
   text-align: center;
+  padding: 20px;
 }
 
 .home-link {
@@ -487,210 +460,20 @@ textarea.input-field {
     flex-direction: column;
     gap: 10px;
   }
-}
-.contact-container {
-  min-height: 100vh;
-  background: linear-gradient(135deg, var(--primary-blue), #1a2533);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
 
-.contact-header {
-  text-align: center;
-  padding: 20px;
-}
-
-.contact-header h1 {
-  font-size: 2em;
-  margin-bottom: 10px;
-}
-
-.progress-nav ul {
-  display: flex;
-  justify-content: space-around;
-  list-style: none;
-  padding: 0;
-  margin-bottom: 20px;
-}
-
-.progress-nav li {
-  color: #ccc;
-  font-weight: bold;
-}
-
-.progress-nav li.active {
-  color: #00c4b4;
-}
-
-.form-wrapper {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.step {
-  text-align: center;
-  padding: 20px;
-}
-
-.step h2 {
-  font-size: 1.5em;
-  margin-bottom: 10px;
-}
-
-.step p {
-  color: #ddd;
-  margin-bottom: 15px;
-}
-
-.input-field {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: none;
-  border-radius: 5px;
-  background: rgba(255, 255, 255, 0.2);
-  color: var(--light-text);
-  font-size: 1em;
-}
-
-.input-field:focus {
-  outline: none;
-  background: rgba(255, 255, 255, 0.3);
-}
-
-textarea.input-field {
-  height: 150px;
-  resize: vertical;
-}
-
-.nav-buttons {
-  display: flex;
-  gap: 10px;
-  justify-content: flex-end;
-}
-
-.cta-btn {
-  background: linear-gradient(45deg, #00c4b4, #ffd700);
-  color: #1a2533;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.cta-btn:hover {
-  transform: scale(1.05);
-}
-
-.cta-btn:disabled {
-  background: #999;
-  cursor: not-allowed;
-}
-
-.cta-btn.secondary {
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--light-text);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.cta-btn.secondary:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.review {
-  background: rgba(255, 255, 255, 0.15);
-  padding: 15px;
-  border-radius: 5px;
-  margin-bottom: 15px;
-}
-
-.review p {
-  margin: 5px 0;
-}
-
-.confirmation {
-  text-align: center;
-  padding: 20px;
-}
-
-.contact-footer {
-  text-align: center;
-  padding: 10px;
-  font-size: 0.9em;
-  color: #bbb;
-}
-
-@media (max-width: 768px) {
-  .contact-container {
-    padding: 10px;
-  }
-  .progress-nav ul {
-    flex-direction: column;
-    gap: 10px;
-  }
   .nav-buttons {
     flex-direction: column;
   }
+
   .cta-btn {
     width: 100%;
   }
-}
-.footer {
-  background: linear-gradient(180deg, rgba(26, 37, 51, 0.9), transparent);
-  padding: 20px;
-  margin-top: auto;
-  width: 100%;
-}
 
-.footer-content {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.footer a {
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.3s ease;
-}
-
-.footer a:hover {
-  color: #ffd700; /* Gold hover effect */
-}
-
-@media (max-width: 768px) {
   .footer {
     padding: 15px;
   }
+
   .footer-content p {
     font-size: 0.9rem;
   }
-}
-.hero {
-  text-align: center;
-  padding: 60px 20px;
-  background: linear-gradient(180deg, rgba(0, 95, 153, 0.25), transparent);
-}
-.hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-.hero p {
-  font-size: 1.2rem;
-  opacity: 0.85;
-}
-.refund-tracker, .data-entry {
-  text-align: center;
-  padding: 20px;
-}
-.progress-bar {
-  width: 0;
-  height: 10px;
-  background: #ff8c00;
-  transition: width 1s ease;
 }
