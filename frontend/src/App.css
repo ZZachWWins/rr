@@ -488,3 +488,156 @@ textarea.input-field {
     gap: 10px;
   }
 }
+.contact-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--primary-blue), #1a2533);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-header {
+  text-align: center;
+  padding: 20px;
+}
+
+.contact-header h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.progress-nav ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.progress-nav li {
+  color: #ccc;
+  font-weight: bold;
+}
+
+.progress-nav li.active {
+  color: #00c4b4;
+}
+
+.form-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.step {
+  text-align: center;
+  padding: 20px;
+}
+
+.step h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.step p {
+  color: #ddd;
+  margin-bottom: 15px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--light-text);
+  font-size: 1em;
+}
+
+.input-field:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+textarea.input-field {
+  height: 150px;
+  resize: vertical;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.cta-btn {
+  background: linear-gradient(45deg, #00c4b4, #ffd700);
+  color: #1a2533;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.cta-btn:hover {
+  transform: scale(1.05);
+}
+
+.cta-btn:disabled {
+  background: #999;
+  cursor: not-allowed;
+}
+
+.cta-btn.secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--light-text);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.cta-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.review {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.review p {
+  margin: 5px 0;
+}
+
+.confirmation {
+  text-align: center;
+  padding: 20px;
+}
+
+.contact-footer {
+  text-align: center;
+  padding: 10px;
+  font-size: 0.9em;
+  color: #bbb;
+}
+
+@media (max-width: 768px) {
+  .contact-container {
+    padding: 10px;
+  }
+  .progress-nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .nav-buttons {
+    flex-direction: column;
+  }
+  .cta-btn {
+    width: 100%;
+  }
+}
