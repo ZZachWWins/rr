@@ -50,7 +50,7 @@ body {
 }
 
 .sticky-header {
-  position: static; /* Changed to static to take up space and not overlap */
+  position: static;
   width: 100%;
   z-index: 1000;
   background: var(--glass-bg);
@@ -265,7 +265,7 @@ footer {
   text-align: center;
   padding: 40px 20px;
   background: linear-gradient(180deg, transparent, rgba(var(--primary-blue), 0.25));
-  margin-top> auto;
+  margin-top: auto; /* Fixed syntax error by replacing '>' with ':' */
 }
 
 footer a {
@@ -509,7 +509,7 @@ textarea.input-field {
 
   .nav-menu {
     position: absolute;
-    top: 100%; /* Position below header */
+    top: 100%;
     right: 12px;
     background: var(--dark-bg);
     border: 1px solid var(--glass-border);
