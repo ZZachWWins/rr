@@ -50,14 +50,25 @@ body {
 }
 
 .sticky-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  width: 100%;
   z-index: 1000;
   background: var(--glass-bg);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   border-bottom: 1px solid var(--glass-border);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.sticky-header.hidden {
+  transform: translateY(-100%);
+}
+
+.sticky-header.visible {
+  transform: translateY(0);
 }
 
 .nav-menu {
@@ -115,13 +126,14 @@ body {
 
 .hero {
   text-align: center;
-  padding: 60px 20px;
+  padding: 80px 20px 40px;
   background-size: cover;
   background-position: center;
   color: var(--light-text);
   position: relative;
   overflow: hidden;
   min-height: 400px;
+  margin-top: 60px; /* Offset for fixed header */
 }
 
 .hero h1 {
@@ -491,7 +503,7 @@ textarea.input-field {
 
 @media (max-width: 768px) {
   .hero {
-    padding: 80px 15px; /* More padding to avoid overlap */
+    padding: 120px 15px 40px; /* More padding to account for fixed header */
   }
 
   .hero h1 {

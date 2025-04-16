@@ -1,10 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.pageYOffset;
+      const isScrollingUp = prevScrollPos > currentScrollPos;
+      setIsVisible(currentScrollPos > 50 || isScrollingUp); // Show after 50px scroll or when scrolling up
+      setPrevScrollPos(currentScrollPos);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [prevScrollPos]);
 
   return (
-    <header className="sticky-header">
+    <header className={`sticky-header ${isVisible ? "visible" : "hidden"}`}>
       <div className="flex justify-between items-center max-w-6xl mx-auto px-4 py-3">
         <h1 className="text-2xl font-bold text-white drop-shadow-md">Rapid Refunds</h1>
         <div className="md:hidden">
