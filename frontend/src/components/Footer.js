@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { gsap } from "gsap";
 import { NavLink } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 function Footer() {
   useEffect(() => {
@@ -17,18 +18,45 @@ function Footer() {
   }, []);
 
   return (
-    <footer className="footer glass-container text-center py-6">
-      <div className="footer-content">
-        <p className="text-lg text-white">
-          Built by Zachary © 2025 Rapid Refunds
-        </p>
-        <p className="mt-2">
-          <NavLink to="/contact" className="text-teal-300 hover:text-gold-500 transition-colors">
-            Get in Touch with an Agent
-          </NavLink>
-        </p>
-      </div>
-    </footer>
+    <>
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            'name': 'Rapid Refund',
+            'url': 'https://rapid-refund.com',
+            'contactPoint': {
+              '@type': 'ContactPoint',
+              'telephone': '1-800-REFUND',
+              'email': 'support@rapidrefunds.com',
+              'contactType': 'Customer Service',
+            },
+          })}
+        </script>
+      </Helmet>
+      <footer className="footer glass-container text-center py-6">
+        <div className="footer-content">
+          <p className="text-lg text-white">
+            Built by Zachary © 2025 Rapid Refund
+          </p>
+          <div className="footer-links mt-2">
+            <NavLink to="/contact" className="text-teal-300 hover:text-gold-500 mx-2">
+              Contact
+            </NavLink>
+            <NavLink to="/calculator" className="text-teal-300 hover:text-gold-500 mx-2">
+              Calculator
+            </NavLink>
+            <NavLink to="/upload" className="text-teal-300 hover:text-gold-500 mx-2">
+              Upload Docs
+            </NavLink>
+          </div>
+          <p className="mt-2">
+            Contact Rapid Refund | 1-800-REFUND | support@rapidrefunds.com
+          </p>
+        </div>
+      </footer>
+    </>
   );
 }
 
