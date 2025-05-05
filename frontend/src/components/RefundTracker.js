@@ -17,7 +17,10 @@ function RefundTracker() {
       try {
         const token = localStorage.getItem("token");
         if (!token) {
-          setStatus({ ...status, recentActivity: ["Please log in to view refund status."] });
+          setStatus(s => ({
+            ...s,
+            recentActivity: ["Please log in to view refund status."],
+          }));
           setIsLoading(false);
           return;
         }
@@ -37,7 +40,7 @@ function RefundTracker() {
       }
     };
     fetchStatus();
-  }, []);
+  }, []); // Empty dependency array is correct; functional update avoids 'status' dependency
 
   return (
     <>
