@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
+import axios from "axios";
 
 function PricingCalculator() {
   const [income, setIncome] = useState("");
@@ -8,15 +9,10 @@ function PricingCalculator() {
 
   const calculateFee = (income) => {
     const numIncome = parseFloat(income);
-    if (numIncome <= 100000) {
-      return 35; // $35 for ≤$100k
-    } else if (numIncome <= 243000) {
-      return 75; // $75 for $100k-$243k
-    } else if (numIncome <= 609000) {
-      return 250; // $250 for $243k-$609k
-    } else {
-      return 500; // $500 for >$609k
-    }
+    if (numIncome <= 100000) return 35;
+    else if (numIncome <= 243000) return 75;
+    else if (numIncome <= 609000) return 250;
+    else return 500;
   };
 
   const handleSubmit = async (e) => {
@@ -24,13 +20,11 @@ function PricingCalculator() {
     if (!agrees || !income) return;
     const fee = calculateFee(income);
     try {
-      const response = await fetch("/api/RefundCalculator", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ income: parseFloat(income), deductions: 0 }),
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/calculate-refund`, {
+        income: parseFloat(income),
+        deductions: 0,
       });
-      const data = await response.json();
-      setResult({ refund: data.refund, fee });
+      setResult({ refund: response.data.refund, fee });
     } catch (error) {
       console.error("Failed:", error);
     }

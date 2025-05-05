@@ -4,6 +4,12 @@ import { NavLink } from "react-router-dom";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const isAuthenticated = !!localStorage.getItem("token");
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.reload();
+  };
 
   return (
     <>
@@ -12,7 +18,7 @@ function Header() {
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'SiteNavigationElement',
-            'name': ['Home', 'Upload Docs', 'Calculator', 'Testimonials', 'Contact', 'Agreement'],
+            'name': ['Home', 'Upload Docs', 'Calculator', 'Testimonials', 'Contact', 'Agreement', 'Tracker', 'Login', 'Register'],
             'url': [
               'https://rapid-refund.com/',
               'https://rapid-refund.com/upload',
@@ -20,6 +26,9 @@ function Header() {
               'https://rapid-refund.com/testimonials',
               'https://rapid-refund.com/contact',
               'https://rapid-refund.com/agreement',
+              'https://rapid-refund.com/tracker',
+              'https://rapid-refund.com/login',
+              'https://rapid-refund.com/register',
             ],
           })}
         </script>
@@ -43,6 +52,19 @@ function Header() {
               <li><NavLink to="/testimonials" className="nav-link">Testimonials</NavLink></li>
               <li><NavLink to="/contact" className="nav-link">Contact</NavLink></li>
               <li><NavLink to="/agreement" className="nav-link">Agreement</NavLink></li>
+              <li><NavLink to="/tracker" className="nav-link">Tracker</NavLink></li>
+              {isAuthenticated ? (
+                <li>
+                  <button onClick={handleLogout} className="nav-link">
+                    Logout
+                  </button>
+                </li>
+              ) : (
+                <>
+                  <li><NavLink to="/login" className="nav-link">Login</NavLink></li>
+                  <li><NavLink to="/register" className="nav-link">Register</NavLink></li>
+                </>
+              )}
             </ul>
           </nav>
         </div>

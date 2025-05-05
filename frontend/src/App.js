@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./App.css";
@@ -13,6 +13,8 @@ import PricingCalculator from "./components/PricingCalculator";
 import UserAgreement from "./components/UserAgreement";
 import TopBanner from "./components/TopBanner";
 import Footer from "./components/Footer";
+import Login from "./components/Login";
+import Register from "./components/Register";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -32,6 +34,12 @@ function App() {
     });
   }, []);
 
+  const isAuthenticated = () => !!localStorage.getItem("token");
+
+  const ProtectedRoute = ({ children }) => {
+    return isAuthenticated() ? children : <Navigate to="/login" />;
+  };
+
   return (
     <Router>
       <div className="app">
@@ -44,9 +52,6 @@ function App() {
               <div>
                 <Hero />
                 <section className="section glass-container">
-                  <RefundTracker />
-                </section>
-                <section className="section glass-container">
                   <DocumentUpload />
                 </section>
                 <section className="section glass-container">
@@ -58,9 +63,11 @@ function App() {
           <Route
             path="/upload"
             element={
-              <section className="section glass-container">
-                <DocumentUpload />
-              </section>
+              <ProtectedRoute>
+                <section className="section glass-container">
+                  <DocumentUpload />
+                </section>
+              </ProtectedRoute>
             }
           />
           <Route
@@ -79,13 +86,19 @@ function App() {
               </section>
             }
           />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/agreement" element={<UserAgreement />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route
-            path="/contact"
-            element={<Contact />}
-          />
-          <Route
-            path="/agreement"
-            element={<UserAgreement />}
+            path="/tracker"
+            element={
+              <ProtectedRoute>
+                <section className="section glass-container">
+                  <RefundTracker />
+                </section>
+              </ProtectedRoute>
+            }
           />
         </Routes>
         <Footer />

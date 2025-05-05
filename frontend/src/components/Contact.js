@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import axios from "axios";
 
 const Contact = () => {
   const [step, setStep] = useState(1);
@@ -11,15 +12,19 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Simulate submission (replace with API call in production)
-    setSubmitted(true);
-    setTimeout(() => {
-      setStep(1);
-      setFormData({ name: "", email: "", message: "" });
-      setSubmitted(false);
-    }, 3000);
+    try {
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/contact`, formData);
+      setSubmitted(true);
+      setTimeout(() => {
+        setStep(1);
+        setFormData({ name: "", email: "", message: "" });
+        setSubmitted(false);
+      }, 3000);
+    } catch (error) {
+      console.error("Submission failed:", error);
+    }
   };
 
   return (

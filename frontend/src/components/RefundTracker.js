@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { Helmet } from "react-helmet";
+import axios from "axios";
 
 function RefundTracker() {
   const [status, setStatus] = useState({
@@ -10,18 +11,28 @@ function RefundTracker() {
   });
 
   useEffect(() => {
-    // Mock data for now
-    setStatus({
-      estimatedRefund: 5000,
-      progress: 75,
-      recentActivity: ["Document uploaded", "Processing started"],
-    });
-    gsap.to(".progress-bar", {
-      width: `${status.progress}%`,
-      duration: 1,
-      ease: "power3.out",
-    });
-  }, [status.progress]);
+    const fetchStatus = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          setStatus({ ...status, recentActivity: ["Please log in to view refund status."] });
+          return;
+        }
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/refund`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        setStatus(response.data);
+        gsap.to(".progress-bar", {
+          width: `${response.data.progress}%`,
+          duration: 1,
+          ease: "power3.out",
+        });
+      } catch (error) {
+        console.error("Failed to fetch status:", error);
+      }
+    };
+    fetchStatus();
+  }, []);
 
   return (
     <>

@@ -5,13 +5,24 @@ import { Helmet } from "react-helmet";
 const DocumentUpload = () => {
   const [file, setFile] = useState(null);
   const [uploadStatus, setUploadStatus] = useState("");
-  const cloudName = "dbraufdni";
-  const unsignedUploadPreset = "rapid_refund_preset"; // Replace with your actual preset
+  const cloudName = process.env.REACT_APP_CLOUDINARY_CLOUD_NAME || "dbraufdni";
+  const unsignedUploadPreset = "rapid_refund_preset";
 
   const handleUpload = async (e) => {
     e.preventDefault();
     if (!file) {
       setUploadStatus("Please select a file!");
+      return;
+    }
+
+    const validTypes = ["application/pdf", "image/jpeg", "image/png"];
+    const maxSize = 5 * 1024 * 1024; // 5MB
+    if (!validTypes.includes(file.type)) {
+      setUploadStatus("Only PDF, JPEG, or PNG files are allowed!");
+      return;
+    }
+    if (file.size > maxSize) {
+      setUploadStatus("File size must be less than 5MB!");
       return;
     }
 
@@ -24,7 +35,21 @@ const DocumentUpload = () => {
         `https://api.cloudinary.com/v1_1/${cloudName}/upload`,
         data
       );
-      setUploadStatus(`Upload successful! URL: ${response.data.secure_url}`);
+      const fileUrl = response.data.secure_url;
+
+      const token = localStorage.getItem("token");
+      if (!token) {
+        setUploadStatus("Please log in to upload documents.");
+        return;
+      }
+
+      await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/documents`,
+        { fileUrl, fileName: file.name },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
+      setUploadStatus(`Upload successful! File saved.`);
     } catch (error) {
       setUploadStatus("Upload failed. Try again!");
       console.error(error);

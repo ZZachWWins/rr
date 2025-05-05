@@ -50,6 +50,9 @@ function Footer() {
             <NavLink to="/upload" className="text-teal-300 hover:text-gold-500 mx-2">
               Upload Docs
             </NavLink>
+            <NavLink to="/tracker" className="text-teal-300 hover:text-gold-500 mx-2">
+              Tracker
+            </NavLink>
           </div>
           <p className="mt-2">
             Contact Rapid Refund | 1-800-REFUND | support@rapidrefunds.com
