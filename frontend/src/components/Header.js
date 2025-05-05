@@ -32,16 +32,18 @@ function Header() {
             ],
           })}
         </script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
       </Helmet>
       <header className="sticky-header">
-        <div className="flex justify-between items-center max-w-6xl mx-auto px-2 py-1">
-          <h1 className="text-sm font-bold text-white drop-shadow-md">Rapid Refund</h1>
+        <div className="flex justify-between items-center max-w-6xl mx-auto px-4 py-2">
+          <h1 className="text-lg font-bold text-white drop-shadow-md">Rapid Refund</h1>
           <div className="md:hidden">
-            <button onClick={() => setIsOpen(!isOpen)} className="toggle-btn">
-              <span className="sr-only">{isOpen ? "Click here to close menu" : "Click here for menu"}</span>
-              <svg className="w-.25 h-.25" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"} />
-              </svg>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="menu-btn"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+            >
+              <i className={isOpen ? "fas fa-times" : "fas fa-bars"}></i>
             </button>
           </div>
           <nav className={`nav-menu ${isOpen ? 'nav-open' : 'nav-closed'} md:nav-open`}>
