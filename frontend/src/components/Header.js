@@ -1,14 +1,26 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import { NavLink } from "react-router-dom";
+import { gsap } from "gsap";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isBannerVisible, setIsBannerVisible] = useState(true);
   const isAuthenticated = !!localStorage.getItem("token");
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     window.location.reload();
+  };
+
+  const handleCloseBanner = () => {
+    gsap.to(".banner-section", {
+      opacity: 0,
+      height: 0,
+      duration: 0.5,
+      ease: "power3.in",
+      onComplete: () => setIsBannerVisible(false),
+    });
   };
 
   return (
@@ -35,7 +47,22 @@ function Header() {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
       </Helmet>
       <header className="sticky-header">
-        <div className="flex justify-between items-center max-w-6xl mx-auto px-4 py-2">
+        {isBannerVisible && (
+          <div className="banner-section">
+            <span>Get Your Tax Refund Fast! Connect with Rapid Refund at rapid-refund.com.</span>
+            <div>
+              <NavLink to="/calculator" className="cta-btn ml-4">Calculate Refund</NavLink>
+              <button
+                onClick={handleCloseBanner}
+                className="close-btn"
+                aria-label="Close banner"
+              >
+                <i className="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+        )}
+        <div className="header-content flex justify-between items-center max-w-6xl mx-auto px-4 py-2">
           <h1 className="text-lg font-bold text-white drop-shadow-md">Rapid Refund</h1>
           <div className="md:hidden">
             <button
@@ -54,7 +81,7 @@ function Header() {
               <li><NavLink to="/testimonials" className="nav-link">Testimonials</NavLink></li>
               <li><NavLink to="/contact" className="nav-link">Contact</NavLink></li>
               <li><NavLink to="/agreement" className="nav-link">Agreement</NavLink></li>
-              <li><NavLink to="/tracker" className="nav-link">Tracker</NavLink></li>
+              <li><NavLink to="/tracker" className add="nav-link">Tracker</NavLink></li>
               {isAuthenticated ? (
                 <li>
                   <button onClick={handleLogout} className="nav-link">
