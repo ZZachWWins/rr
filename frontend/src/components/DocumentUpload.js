@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet";
 const DocumentUpload = () => {
   const [file, setFile] = useState(null);
   const [uploadStatus, setUploadStatus] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const cloudName = process.env.REACT_APP_CLOUDINARY_CLOUD_NAME || "dbraufdni";
   const unsignedUploadPreset = "rapid_refund_preset";
 
@@ -26,6 +27,7 @@ const DocumentUpload = () => {
       return;
     }
 
+    setIsLoading(true);
     const data = new FormData();
     data.append("file", file);
     data.append("upload_preset", unsignedUploadPreset);
@@ -40,6 +42,7 @@ const DocumentUpload = () => {
       const token = localStorage.getItem("token");
       if (!token) {
         setUploadStatus("Please log in to upload documents.");
+        setIsLoading(false);
         return;
       }
 
@@ -50,9 +53,11 @@ const DocumentUpload = () => {
       );
 
       setUploadStatus(`Upload successful! File saved.`);
+      setIsLoading(false);
     } catch (error) {
       setUploadStatus("Upload failed. Try again!");
       console.error(error);
+      setIsLoading(false);
     }
   };
 
@@ -76,25 +81,23 @@ const DocumentUpload = () => {
           })}
         </script>
       </Helmet>
-      <div className="text-center">
-        <h2 className="text-2xl font-bold mb-4">Securely Upload Your Tax Documents</h2>
-        <p className="mb-4">Submit your tax forms to Rapid Refund at rapid-refund.com with bank-level encryption to start your refund process.</p>
+      <div className="text-center glass-container py-10">
+        <h2 className="text-2xl font-bold mb-4 text-white">Securely Upload Your Tax Documents</h2>
+        <p className="mb-4 text-white">Submit your tax forms to Rapid Refund at rapid-refund.com with bank-level encryption to start your refund process.</p>
         <form onSubmit={handleUpload} className="space-y-4">
           <input
             type="file"
             accept="application/pdf,image/*"
             onChange={(e) => setFile(e.target.files[0])}
-            className="w-full p-2 rounded bg-white bg-opacity-10 text-white"
+            className="input-field w-full"
             aria-label="Upload Tax Document"
           />
-          <button
-            type="submit"
-            className="cta-btn bg-teal-500 text-white p-2 rounded"
-          >
-            Upload Document
+          <button type="submit" className="cta-btn" disabled={isLoading}>
+            {isLoading ? "Uploading..." : "Upload Document"}
           </button>
+          {isLoading && <div className="loader mt-4"></div>}
         </form>
-        {uploadStatus && <p className="mt-4">{uploadStatus}</p>}
+        {uploadStatus && <p className="mt-4 text-white">{uploadStatus}</p>}
       </div>
     </>
   );

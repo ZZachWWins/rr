@@ -37,13 +37,13 @@ const TopBanner = () => {
           content="Get your tax refund fast with Rapid Refund at rapid-refund.com. Secure filing and instant tracking."
         />
       </Helmet>
-      <div className="banner fixed top-0 left-0 w-full bg-gray-800 bg-opacity-90 backdrop-blur-md text-white p-3 text-center z-50 flex justify-between items-center">
+      <div className="banner text-white p-3 text-center z-50 flex justify-between items-center">
         <span>Get Your Tax Refund Fast! Connect with Rapid Refund at rapid-refund.com.</span>
         <div>
           <NavLink to="/calculator" className="cta-btn ml-4">Calculate Refund</NavLink>
           <button
             onClick={handleClose}
-            className="text-white hover:text-teal-300 focus:outline-none text-xl px-2"
+            className="text-white hover:text-[var(--accent-gold)] focus:outline-none text-xl px-2"
           >
             ✕
           </button>

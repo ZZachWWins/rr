@@ -1,105 +1,47 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import Hero from "./components/Hero";
+import TopBanner from "./components/TopBanner";
+import Contact from "./components/Contact";
 import RefundTracker from "./components/RefundTracker";
 import DocumentUpload from "./components/DocumentUpload";
-import Testimonials from "./components/Testimonials";
-import Contact from "./components/Contact";
 import PricingCalculator from "./components/PricingCalculator";
+import Testimonials from "./components/Testimonials";
 import UserAgreement from "./components/UserAgreement";
-import TopBanner from "./components/TopBanner";
-import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Register from "./components/Register";
-
-gsap.registerPlugin(ScrollTrigger);
+import { Helmet } from "react-helmet";
+import "./App.css";
 
 function App() {
-  React.useEffect(() => {
-    gsap.utils.toArray(".section").forEach((section) => {
-      gsap.from(section, {
-        opacity: 0,
-        y: 100,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: section,
-          start: "top 80%",
-        },
-      });
-    });
-  }, []);
-
-  const isAuthenticated = () => !!localStorage.getItem("token");
-
-  const ProtectedRoute = ({ children }) => {
-    return isAuthenticated() ? children : <Navigate to="/login" />;
-  };
-
   return (
     <Router>
       <div className="app">
+        <Helmet>
+          <title>Rapid Refund | Fast & Secure Tax Refunds Online</title>
+          <meta
+            name="description"
+            content="Get your tax refund fast with Rapid Refund at rapid-refund.com. Secure tax filing, instant refund tracking, and expert support."
+          />
+          <meta
+            name="keywords"
+            content="rapid refund, rapid-refund, fast tax refund, secure tax filing, tax refund online"
+          />
+        </Helmet>
         <TopBanner />
         <Header />
         <Routes>
-          <Route
-            path="/"
-            element={
-              <div>
-                <Hero />
-                <section className="section glass-container">
-                  <DocumentUpload />
-                </section>
-                <section className="section glass-container">
-                  <Testimonials />
-                </section>
-              </div>
-            }
-          />
-          <Route
-            path="/upload"
-            element={
-              <ProtectedRoute>
-                <section className="section glass-container">
-                  <DocumentUpload />
-                </section>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/calculator"
-            element={
-              <section className="section glass-container">
-                <PricingCalculator />
-              </section>
-            }
-          />
-          <Route
-            path="/testimonials"
-            element={
-              <section className="section glass-container">
-                <Testimonials />
-              </section>
-            }
-          />
+          <Route path="/" element={<Hero />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/tracker" element={<RefundTracker />} />
+          <Route path="/upload" element={<DocumentUpload />} />
+          <Route path="/calculator" element={<PricingCalculator />} />
+          <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/agreement" element={<UserAgreement />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route
-            path="/tracker"
-            element={
-              <ProtectedRoute>
-                <section className="section glass-container">
-                  <RefundTracker />
-                </section>
-              </ProtectedRoute>
-            }
-          />
         </Routes>
         <Footer />
       </div>

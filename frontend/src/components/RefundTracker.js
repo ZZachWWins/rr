@@ -9,13 +9,16 @@ function RefundTracker() {
     progress: 0,
     recentActivity: [],
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchStatus = async () => {
+      setIsLoading(true);
       try {
         const token = localStorage.getItem("token");
         if (!token) {
           setStatus({ ...status, recentActivity: ["Please log in to view refund status."] });
+          setIsLoading(false);
           return;
         }
         const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/refund`, {
@@ -27,8 +30,10 @@ function RefundTracker() {
           duration: 1,
           ease: "power3.out",
         });
+        setIsLoading(false);
       } catch (error) {
         console.error("Failed to fetch status:", error);
+        setIsLoading(false);
       }
     };
     fetchStatus();
@@ -54,13 +59,14 @@ function RefundTracker() {
           })}
         </script>
       </Helmet>
-      <div className="refund-tracker glass-container text-center py-10" style={{ backgroundImage: `url(https://res.cloudinary.com/dbraufdni/image/upload/v1654321/tax_ydpvsx)` }}>
+      <div className="refund-tracker glass-container text-center py-10">
         <h2 className="text-2xl font-bold mb-4 text-white">Track Your Rapid Refund</h2>
         <p className="text-white mb-4">Monitor your tax refund progress in real-time with Rapid Refund at rapid-refund.com.</p>
         <p className="text-white">Estimated Refund: <strong>${status.estimatedRefund}</strong></p>
         <p className="text-white">Progress: <strong>{status.progress}% Complete</strong></p>
-        <div className="progress-bar bg-orange-500 h-2 w-full mt-2 rounded"></div>
-        <button className="cta-btn mt-4 bg-blue-600 text-white">Track Refund</button>
+        <div className="progress-bar h-2 w-full mt-2 rounded"></div>
+        <button className="cta-btn mt-4">Track Refund</button>
+        {isLoading && <div className="loader mt-4"></div>}
         <h3 className="text-xl font-bold mt-6 text-white">Recent Activity</h3>
         <ul className="text-white">
           {status.recentActivity.map((activity, index) => (

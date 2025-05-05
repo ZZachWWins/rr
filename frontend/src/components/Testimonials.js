@@ -54,18 +54,18 @@ const Testimonials = () => {
           ])}
         </script>
       </Helmet>
-      <section className="section glass-container text-center py-12" style={{ backgroundImage: `url(https://res.cloudinary.com/dbraufdni/image/upload/v1654321/istockphoto-1325860496-612x612_acblex)` }}>
+      <section className="section glass-container text-center py-12">
         <h2 className="text-4xl font-bold mb-8 text-white drop-shadow-md">What Our Clients Say About Rapid Refund</h2>
         <div className="testimonials-overlay grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          <div className="testimonial-card p-6 bg-white bg-opacity-95 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-gray-900">
+          <div className="testimonial-card p-6 bg-[rgba(255,255,255,0.98)] rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-[var(--dark-bg)]">
             <p className="text-lg italic">"Rapid Refund got my $4,000 tax refund in just 3 days! Best service ever."</p>
             <p className="mt-4 font-semibold text-right">- Jane D., Texas</p>
           </div>
-          <div className="testimonial-card p-6 bg-white bg-opacity-95 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-gray-900">
+          <div className="testimonial-card p-6 bg-[rgba(255,255,255,0.98)] rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-[var(--dark-bg)]">
             <p className="text-lg italic">"Easy process, secure, and great support. Got my refund fast!"</p>
             <p className="mt-4 font-semibold text-right">- John S., California</p>
           </div>
-          <div className="testimonial-card p-6 bg-white bg-opacity-95 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-gray-900">
+          <div className="testimonial-card p-6 bg-[rgba(255,255,255,0.98)] rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-[var(--dark-bg)]">
             <p className="text-lg italic">"The calculator saved me hours. Rapid Refund is awesome!"</p>
             <p className="mt-4 font-semibold text-right">- Mike R., Florida</p>
           </div>
