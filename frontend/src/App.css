@@ -100,6 +100,12 @@ body::before {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+.banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .close-btn {
   color: var(--light-text);
   background: transparent;
@@ -626,7 +632,11 @@ textarea.input-field {
     text-align: center;
   }
 
-  .banner-section .cta-btn {
+  .banner-actions {
+    justify-content: center;
+  }
+
+  .banner-actions .cta-btn {
     margin-left: 0;
   }
 

@@ -1,105 +1,50 @@
-import React, { useState } from "react";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Hero from "./components/Hero";
+import Contact from "./components/Contact";
+import RefundTracker from "./components/RefundTracker";
+import DocumentUpload from "./components/DocumentUpload";
+import PricingCalculator from "./components/PricingCalculator";
+import Testimonials from "./components/Testimonials";
+import UserAgreement from "./components/UserAgreement";
+import Login from "./components/Login";
+import Register from "./components/Register";
 import { Helmet } from "react-helmet";
-import { NavLink } from "react-router-dom";
-import { gsap } from "gsap";
+import "./App.css";
 
-function Header() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isBannerVisible, setIsBannerVisible] = useState(true);
-  const isAuthenticated = !!localStorage.getItem("token");
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    window.location.reload();
-  };
-
-  const handleCloseBanner = () => {
-    gsap.to(".banner-section", {
-      opacity: 0,
-      height: 0,
-      duration: 0.5,
-      ease: "power3.in",
-      onComplete: () => setIsBannerVisible(false),
-    });
-  };
-
+function App() {
   return (
-    <>
-      <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'SiteNavigationElement',
-            'name': ['Home', 'Upload Docs', 'Calculator', 'Testimonials', 'Contact', 'Agreement', 'Tracker', 'Login', 'Register'],
-            'url': [
-              'https://rapid-refund.com/',
-              'https://rapid-refund.com/upload',
-              'https://rapid-refund.com/calculator',
-              'https://rapid-refund.com/testimonials',
-              'https://rapid-refund.com/contact',
-              'https://rapid-refund.com/agreement',
-              'https://rapid-refund.com/tracker',
-              'https://rapid-refund.com/login',
-              'https://rapid-refund.com/register',
-            ],
-          })}
-        </script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-      </Helmet>
-      <header className="sticky-header">
-        {isBannerVisible && (
-          <div className="banner-section">
-            <span>Get Your Tax Refund Fast! Connect with Rapid Refund at rapid-refund.com.</span>
-            <div>
-              <NavLink to="/calculator" className="cta-btn ml-4">Calculate Refund</NavLink>
-              <button
-                onClick={handleCloseBanner}
-                className="close-btn"
-                aria-label="Close banner"
-              >
-                <i className="fas fa-times"></i>
-              </button>
-            </div>
-          </div>
-        )}
-        <div className="header-content flex justify-between items-center max-w-6xl mx-auto px-4 py-2">
-          <h1 className="text-lg font-bold text-white drop-shadow-md">Rapid Refund</h1>
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="menu-btn"
-              aria-label={isOpen ? "Close menu" : "Open menu"}
-            >
-              <i className={isOpen ? "fas fa-times" : "fas fa-bars"}></i>
-            </button>
-          </div>
-          <nav className={`nav-menu ${isOpen ? 'nav-open' : 'nav-closed'} md:nav-open`}>
-            <ul className="flex flex-col md:flex-row gap-2">
-              <li><NavLink to="/" className="nav-link">Home</NavLink></li>
-              <li><NavLink to="/upload" className="nav-link">Upload Docs</NavLink></li>
-              <li><NavLink to="/calculator" className="nav-link">Calculator</NavLink></li>
-              <li><NavLink to="/testimonials" className="nav-link">Testimonials</NavLink></li>
-              <li><NavLink to="/contact" className="nav-link">Contact</NavLink></li>
-              <li><NavLink to="/agreement" className="nav-link">Agreement</NavLink></li>
-              <li><NavLink to="/tracker" className add="nav-link">Tracker</NavLink></li>
-              {isAuthenticated ? (
-                <li>
-                  <button onClick={handleLogout} className="nav-link">
-                    Logout
-                  </button>
-                </li>
-              ) : (
-                <>
-                  <li><NavLink to="/login" className="nav-link">Login</NavLink></li>
-                  <li><NavLink to="/register" className="nav-link">Register</NavLink></li>
-                </>
-              )}
-            </ul>
-          </nav>
-        </div>
-      </header>
-    </>
+    <Router>
+      <div className="app">
+        <Helmet>
+          <title>Rapid Refund | Fast & Secure Tax Refunds Online</title>
+          <meta
+            name="description"
+            content="Get your tax refund fast with Rapid Refund at rapid-refund.com. Secure tax filing, instant refund tracking, and expert support."
+          />
+          <meta
+            name="keywords"
+            content="rapid refund, rapid-refund, fast tax refund, secure tax filing, tax refund online"
+          />
+        </Helmet>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Hero />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/tracker" element={<RefundTracker />} />
+          <Route path="/upload" element={<DocumentUpload />} />
+          <Route path="/calculator" element={<PricingCalculator />} />
+          <Route path="/testimonials" element={<Testimonials />} />
+          <Route path="/agreement" element={<UserAgreement />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
-export default Header;
+export default App;
