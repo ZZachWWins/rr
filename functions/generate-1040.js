@@ -85,9 +85,12 @@ exports.handler = async (event) => {
     // Save the filled PDF
     const pdfBytes = await pdfDoc.save();
 
-    // Upload to Cloudinary
+    // Upload to Cloudinary with proper base64 formatting
+    const base64String = Buffer.from(pdfBytes).toString('base64');
+    const dataUri = `data:application/pdf;base64,${base64String}`; // Add data URI scheme
+
     const formData = new FormData();
-    formData.append('file', Buffer.from(pdfBytes).toString('base64'));
+    formData.append('file', dataUri); // Use the data URI format
     formData.append('upload_preset', process.env.CLOUDINARY_UPLOAD_PRESET);
 
     const cloudinaryResponse = await axios.post(
