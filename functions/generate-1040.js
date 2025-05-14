@@ -85,22 +85,12 @@ exports.handler = async (event) => {
     // Save the filled PDF
     const pdfBytes = await pdfDoc.save();
 
-    // Upload to Cloudinary with proper base64 formatting
+    // Convert PDF to base64 string
     const base64String = Buffer.from(pdfBytes).toString('base64');
-    const dataUri = `data:application/pdf;base64,${base64String}`; // Add data URI scheme
-
-    const formData = new FormData();
-    formData.append('file', dataUri); // Use the data URI format
-    formData.append('upload_preset', process.env.CLOUDINARY_UPLOAD_PRESET);
-
-    const cloudinaryResponse = await axios.post(
-      `https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/raw/upload`,
-      formData
-    );
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ pdfUrl: cloudinaryResponse.data.secure_url }),
+      body: JSON.stringify({ pdfBase64: base64String }),
     };
   } catch (error) {
     return {
