@@ -47,6 +47,9 @@ function Footer() {
             <NavLink to="/calculator" className="text-teal-300 hover:text-gold-500 mx-2">
               Calculator
             </NavLink>
+            <NavLink to="/generate-1040" className="text-teal-300 hover:text-gold-500 mx-2">
+              Generate 1040
+            </NavLink>
             <NavLink to="/upload" className="text-teal-300 hover:text-gold-500 mx-2">
               Upload Docs
             </NavLink>

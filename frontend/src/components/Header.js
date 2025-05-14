@@ -24,6 +24,7 @@ function Header() {
   };
 
   const handleCloseBanner = () => {
+   // Handle closing the banner with animation
     const banner = document.querySelector(".banner-section");
     if (banner) {
       gsap.to(banner, {
@@ -45,11 +46,12 @@ function Header() {
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'SiteNavigationElement',
-            'name': ['Home', 'Upload Docs', 'Calculator', 'Testimonials', 'Contact', 'Agreement', 'Tracker', 'Login', 'Register'],
+            'name': ['Home', 'Upload Docs', 'Calculator', 'Generate 1040', 'Testimonials', 'Contact', 'Agreement', 'Tracker', 'Login', 'Register'], // Added Generate 1040
             'url': [
               'https://rapid-refund.com/',
               'https://rapid-refund.com/upload',
               'https://rapid-refund.com/calculator',
+              'https://rapid-refund.com/generate-1040', // Added URL
               'https://rapid-refund.com/testimonials',
               'https://rapid-refund.com/contact',
               'https://rapid-refund.com/agreement',
@@ -97,6 +99,7 @@ function Header() {
               <li><NavLink to="/" className="nav-link">Home</NavLink></li>
               <li><NavLink to="/upload" className="nav-link">Upload Docs</NavLink></li>
               <li><NavLink to="/calculator" className="nav-link">Calculator</NavLink></li>
+              <li><NavLink to="/generate-1040" className="nav-link">Generate 1040</NavLink></li> {/* Added */}
               <li><NavLink to="/testimonials" className="nav-link">Testimonials</NavLink></li>
               <li><NavLink to="/contact" className="nav-link">Contact</NavLink></li>
               <li><NavLink to="/agreement" className="nav-link">Agreement</NavLink></li>

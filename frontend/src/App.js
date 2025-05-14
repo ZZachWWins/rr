@@ -11,6 +11,7 @@ import Testimonials from "./components/Testimonials";
 import UserAgreement from "./components/UserAgreement";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Generate1040 from "./components/Generate1040"; // Import the new component
 import { Helmet } from "react-helmet";
 import "./App.css";
 
@@ -40,6 +41,7 @@ function App() {
           <Route path="/agreement" element={<UserAgreement />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/generate-1040" element={<Generate1040 />} /> {/* New route */}
         </Routes>
         <Footer />
       </div>
